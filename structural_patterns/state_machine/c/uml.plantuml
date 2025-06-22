@@ -1,0 +1,41 @@
+@startuml
+interface State {
+    + enter()
+    + execute()
+    + exit()
+}
+
+class IdleState {
+    + enter()
+    + execute()
+    + exit()
+}
+
+class ProcessingState {
+    + enter()
+    + execute()
+    + exit()
+}
+
+class ErrorState {
+    + enter()
+    + execute()
+    + exit()
+}
+
+class StateMachine {
+    - State *current_state
+    + set_state(State *state)
+    + execute()
+}
+
+class Client {
+    + main()
+}
+
+State <|.. IdleState
+State <|.. ProcessingState
+State <|.. ErrorState
+StateMachine o-- State : "current"
+Client -> StateMachine : "changes state"
+@enduml

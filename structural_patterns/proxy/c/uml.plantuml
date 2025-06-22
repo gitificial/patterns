@@ -1,0 +1,33 @@
+@startuml
+interface ITemperatureSensor {
+    + bool init()
+    + bool get_temperature(float *temperature)
+}
+
+class TemperatureSensorProxy {
+    - float cached_temperature
+    - time_t last_read_time
+    - static const int CACHE_TIMEOUT_SECONDS
+    + bool init()
+    + bool get_temperature(float *temperature)
+}
+
+class TemperatureSensor {
+    + bool init()
+    + bool get_temperature(float *temperature)
+}
+
+class I2CDriver {
+    + bool init()
+    + bool read(uint8_t device_addr, uint8_t reg_addr, uint8_t *data, uint8_t len)
+}
+
+class Client {
+    + main()
+}
+
+Client -> TemperatureSensorProxy : "uses"
+TemperatureSensorProxy ..|> ITemperatureSensor
+TemperatureSensorProxy -> TemperatureSensor : "calls real subject"
+TemperatureSensor -> I2CDriver : "reads from sensor"
+@enduml

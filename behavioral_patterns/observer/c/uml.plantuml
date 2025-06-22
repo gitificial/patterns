@@ -1,0 +1,38 @@
+@startuml
+interface Observer {
+    + update(float temperature)
+}
+
+class Display {
+    + update(float temperature)
+}
+
+class Logger {
+    + update(float temperature)
+}
+
+interface Subject {
+    + attach(Observer *obs)
+    + detach(Observer *obs)
+    + notify()
+}
+
+class TemperatureSensor {
+    - float current_temperature
+    - list<Observer> observers
+    + attach(Observer *obs)
+    + detach(Observer *obs)
+    + notify()
+    + set_temperature(float temp)
+}
+
+class Client {
+    + main()
+}
+
+Observer <|.. Display
+Observer <|.. Logger
+Subject <|.. TemperatureSensor
+TemperatureSensor o-- Observer : "notifies"
+Client -> TemperatureSensor : "registers observers"
+@enduml

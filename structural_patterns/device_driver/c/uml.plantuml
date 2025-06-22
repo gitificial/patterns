@@ -1,0 +1,31 @@
+@startuml
+interface ITemperatureSensor {
+    + bool init()
+    + bool read_temperature(float *temperature)
+}
+
+class TemperatureSensorDriver {
+    + bool init()
+    + bool read_temperature(float *temperature)
+}
+
+class I2CDriver {
+    + bool init()
+    + bool read(uint8_t device_addr, uint8_t reg_addr, uint8_t *data, uint8_t len)
+    + bool write(uint8_t device_addr, uint8_t reg_addr, const uint8_t *data, uint8_t len)
+}
+
+class Client {
+    + main()
+}
+
+class I2CSensor {
+    <<Hardware>>
+}
+
+Client -> TemperatureSensorDriver : "uses"
+TemperatureSensorDriver ..|> ITemperatureSensor
+TemperatureSensorDriver -> I2CDriver : "communicates via"
+I2CDriver -> I2CSensor : "accesses hardware"
+
+@enduml

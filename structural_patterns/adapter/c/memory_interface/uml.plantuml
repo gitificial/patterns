@@ -1,0 +1,44 @@
+@startuml
+' Define Interfaces
+interface MemoryInterface {
+    + bool write(uint16_t addr, uint8_t *data, uint16_t len)
+    + bool read(uint16_t addr, uint8_t *data, uint16_t len)
+}
+
+' Define Application
+class Application {
+    + void save_data()
+    + void load_data()
+}
+
+' Define Adapter
+class EEPROMAdapter {
+    + bool adapter_write(uint16_t addr, uint8_t *data, uint16_t len)
+    + bool adapter_read(uint16_t addr, uint8_t *data, uint16_t len)
+}
+
+' Define EEPROM Driver (Adaptee)
+class EEPROMDriver {
+    + bool eeprom_write(uint16_t addr, uint8_t *data, uint16_t len)
+    + bool eeprom_read(uint16_t addr, uint8_t *data, uint16_t len)
+}
+
+' Define STM32 HAL Layer
+class I2C_HAL {
+    + HAL_StatusTypeDef HAL_I2C_Master_Transmit()
+    + HAL_StatusTypeDef HAL_I2C_Master_Receive()
+}
+
+' Define Hardware Layer
+class EEPROM_Hardware {
+    <<Hardware>>
+}
+
+' Relationships
+Application --> MemoryInterface : "Uses"
+EEPROMAdapter ..|> MemoryInterface : "Implements"
+EEPROMAdapter --> EEPROMDriver : "Calls"
+EEPROMDriver --> I2C_HAL : "Uses"
+I2C_HAL --> EEPROM_Hardware : "Communicates with"
+
+@enduml
