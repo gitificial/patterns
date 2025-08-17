@@ -1,8 +1,6 @@
 /*
  * ClassB.h
  *
- *  Created on: 08.02.2023
- *      Author: user
  */
 
 #ifndef SRC_CALLBACKS_CLASSB_H_

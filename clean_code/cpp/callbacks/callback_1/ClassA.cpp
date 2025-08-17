@@ -1,8 +1,5 @@
 /*
  * ClassA.cpp
- *
- *  Created on: 08.02.2023
- *      Author: user
  */
 
 #include "ClassA.h"

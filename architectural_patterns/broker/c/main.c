@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-// Bring in the broker and services
 #include "broker.h"
 
 // Declare external function to register services
