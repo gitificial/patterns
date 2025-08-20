@@ -67,7 +67,7 @@ int main()
     {
          return n ? self(n - 1, a + b, a) : b;
     };
- 
+
     for (int i{1}; i <= fib_max; ++i)
     {
         std::cout << nth_fibonacci3(i) << (i < fib_max ? ", " : "\n");

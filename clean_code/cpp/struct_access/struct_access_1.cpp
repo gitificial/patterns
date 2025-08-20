@@ -3,8 +3,6 @@
 
 #include <stdio.h>
 #include <typeinfo>
-#include <mutex>
-#include "config.h"
 
 struct X { int i[2]{1, 5}; }; // definition of X
 X x;                 // OK: the definition of X is reachable

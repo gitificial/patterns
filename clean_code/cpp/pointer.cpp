@@ -1,12 +1,4 @@
 /*
- * pointer.cpp
- *
- *  Created on: 24.01.2023
- *      Author: user
- */
-
-
-/*
  * A pointer is a compound type that "points to" another type. Like references,
  * pointers are used for indirect access to other objects. Unlike a reference, a
  * pointer is an object in its own right. Pointers can be assigned and copied; a

@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <typeinfo>
 #include <mutex>
-#include "config.h"
 
 void some_func(const std::string& a, const std::string& b)
 {

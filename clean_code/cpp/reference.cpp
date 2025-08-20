@@ -1,11 +1,4 @@
 /*
- * reference.cpp
- *
- *  Created on: 24.01.2023
- *      Author: user
- */
-
-/*
  * A reference is not an object. Instead, a reference is just another name for
  * an already existing object.
  */

@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <typeinfo>
-#include "config.h"
 
 /*
  * Inspects the declared type of an entity or the type and value category of an expression.
